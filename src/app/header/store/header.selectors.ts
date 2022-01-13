@@ -6,4 +6,4 @@ const cartSelector = createFeatureSelector<fromStore.ShoppingCartState>(fromStor
 const selectCartCount = (state: fromStore.ShoppingCartState) => state.cartCount;
 
 export const cartCount = createSelector(cartSelector, selectCartCount);
-
+export const cartProducts = createSelector(cartSelector, fromStore.selectAll);

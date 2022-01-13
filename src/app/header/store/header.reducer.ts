@@ -16,6 +16,18 @@ export const initialState: ShoppingCartState =  adapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(ShoppingCartActions.incrementCart, state => ({ ...state, cartCount: state.cartCount + 1})),
-  on(ShoppingCartActions.addToCart, state => ({ ...state, cartCount: state.cartCount + 1}))
+  on(ShoppingCartActions.incrementCart, state => ({ ...state, cartCount: 100})),
+  on(ShoppingCartActions.addToCart, (state, action) => {
+    return {
+    ...adapter.addOne(action.product, state),
+    cartCount: 10
+  }
+}),
 );
+
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal,
+} = adapter.getSelectors();

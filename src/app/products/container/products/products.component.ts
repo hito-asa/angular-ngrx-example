@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { props, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as fromCartActions from '../../../header/store/header.actions';
@@ -33,7 +33,8 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void { }
 
   addProductCart(product: Product): void {
-    this.store.dispatch(fromCartActions.addToCart());
+    this.store.dispatch(fromCartActions.addToCart({product}));
+    this.store.dispatch(fromCartActions.incrementCart());
   }
 
 }
